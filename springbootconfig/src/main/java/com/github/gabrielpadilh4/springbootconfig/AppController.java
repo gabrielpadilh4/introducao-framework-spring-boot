@@ -10,8 +10,16 @@ public class AppController {
     @Value("${app.message}")
     public String appMessage;
 
+    @Value("${JAVA_HOME:NOT_DEFINED}") // system variable
+    private String javaHomeVariable;
+
     @GetMapping("/")
     public String getAppMessage() {
         return appMessage;
+    }
+
+    @GetMapping("/envVariable")
+    public String getJavaHomeVariable() {
+        return "%JAVA_HOME% -> " + javaHomeVariable;
     }
 }
